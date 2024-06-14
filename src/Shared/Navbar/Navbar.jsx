@@ -1,10 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const {user,logOut} =useAuth()
+  console.log(user);
+
+  const handleLogout = () =>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Logout successfull",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+  }
+
+
     const links = <>
     
     <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/available-camps">Home</NavLink></li>
+    <li><NavLink to="/available-camps">Available Camps</NavLink></li>
 
     </>
     return (
@@ -18,7 +37,7 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link className="btn btn-ghost text-xl font-bold">SEBA MEDICAL</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -26,7 +45,21 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    {
+      user ? <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        </div>
+      </div>
+      <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+        
+        <li className="ml-3">{user.displayName}</li>
+        <li><Link>Dashboard</Link></li>
+        <li><button onClick={handleLogout}>Logout</button></li>
+      </ul>
+    </div> : <Link to="/login"><button className="btn btn-secondary">Join Now</button></Link>
+    }
   </div>
 </div>
     );
