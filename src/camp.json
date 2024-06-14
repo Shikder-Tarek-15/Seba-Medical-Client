@@ -1,0 +1,123 @@
+[
+    {
+      "campName": "Dhaka General Health Camp",
+      "image": "https://i.ibb.co/zxh9fBZ/dhaka-camp.jpg",
+      "campFees": 200.50,
+      "dateTime": "2024-12-25T09:30:00",
+      "location": "Dhaka",
+      "healthcareProfessionalName": "Dr. Shikder Tarek",
+      "participantCount": 0,
+      "description": "A comprehensive health camp offering free medical check-ups and consultations in Dhaka. Special focus on general health and wellness."
+    },
+    {
+      "campName": "Chattogram Cardiac Check-Up",
+      "image": "https://i.ibb.co/L99hwPm/chattogram.jpg",
+      "campFees": 300.75,
+      "dateTime": "2024-11-15T10:00:00",
+      "location": "Chattogram",
+      "healthcareProfessionalName": "Dr. Farzana Akter",
+      "participantCount": 0,
+      "description": "Focused on cardiac health, this camp in Chattogram provides ECG tests and heart health consultations to the community."
+    },
+    {
+      "campName": "Khulna Women's Health Day",
+      "image": "https://i.ibb.co/yhZfqtK/khulna.jpg",
+      "campFees": 150.00,
+      "dateTime": "2024-10-20T11:00:00",
+      "location": "Khulna",
+      "healthcareProfessionalName": "Dr. Laila Begum",
+      "participantCount": 0,
+      "description": "Dedicated to women's health, this camp in Khulna offers gynecological services, breast cancer screening, and general health advice."
+    },
+    {
+      "campName": "Sylhet Diabetes Awareness Camp",
+      "image": "https://i.ibb.co/gvByNKc/world-diabetes-day.jpg",
+      "campFees": 250.00,
+      "dateTime": "2024-09-30T09:00:00",
+      "location": "Sylhet",
+      "healthcareProfessionalName": "Dr. Ahsan Ullah",
+      "participantCount": 0,
+      "description": "This camp aims to raise awareness about diabetes and provide free blood sugar testing and consultations in Sylhet."
+    },
+    {
+      "campName": "Rajshahi Pediatric Care Camp",
+      "image": "https://i.ibb.co/Qj7FVMS/rajshahi.jpg",
+      "campFees": 120.00,
+      "dateTime": "2024-12-05T10:30:00",
+      "location": "Rajshahi",
+      "healthcareProfessionalName": "Dr. Shirin Akter",
+      "participantCount": 0,
+      "description": "Focused on children’s health, this camp in Rajshahi offers pediatric consultations, vaccinations, and general health checks for kids."
+    },
+    {
+      "campName": "Barisal Senior Citizens Health Camp",
+      "image": "https://i.ibb.co/Hd3swd7/barishal.webp",
+      "campFees": 220.00,
+      "dateTime": "2024-11-22T11:00:00",
+      "location": "Barisal",
+      "healthcareProfessionalName": "Dr. Mizanur Rahman",
+      "participantCount": 0,
+      "description": "Aimed at senior citizens, this Barisal camp provides health check-ups, eye exams, and mobility assistance services for the elderly."
+    },
+    {
+      "campName": "Rangpur Eye Care Camp",
+      "image": "https://i.ibb.co/fMSC9yg/rangpur.jpg",
+      "campFees": 180.00,
+      "dateTime": "2024-12-10T09:30:00",
+      "location": "Rangpur",
+      "healthcareProfessionalName": "Dr. Jahanara Islam",
+      "participantCount": 0,
+      "description": "Specializing in eye health, this camp in Rangpur offers vision tests, glaucoma screenings, and consultations for eye-related issues."
+    },
+    {
+      "campName": "Comilla Orthopedic Check-Up",
+      "image": "https://i.ibb.co/bHnvySP/comilla.jpg",
+      "campFees": 270.00,
+      "dateTime": "2024-10-15T10:00:00",
+      "location": "Comilla",
+      "healthcareProfessionalName": "Dr. Khaled Mahmud",
+      "participantCount": 0,
+      "description": "This camp focuses on orthopedic health, providing bone density tests, physiotherapy consultations, and joint health assessments in Comilla."
+    },
+    {
+      "campName": "Gazipur ENT Health Camp",
+      "image": "https://i.ibb.co/fDJhWzX/gazipur.webp",
+      "campFees": 190.00,
+      "dateTime": "2024-11-05T11:00:00",
+      "location": "Gazipur",
+      "healthcareProfessionalName": "Dr. Kamrul Hasan",
+      "participantCount": 0,
+      "description": "Offering services related to ear, nose, and throat, this camp in Gazipur includes hearing tests, sinus checks, and throat health evaluations."
+    },
+    {
+      "campName": "Mymensingh Allergy Care Camp",
+      "image": "https://i.ibb.co/0rJVQJY/maymensing.jpg",
+      "campFees": 210.00,
+      "dateTime": "2024-12-02T09:30:00",
+      "location": "Mymensingh",
+      "healthcareProfessionalName": "Dr. Mahmuda Islam",
+      "participantCount": 0,
+      "description": "Specialized in allergy care, this camp in Mymensingh offers allergy tests, skin patch tests, and consultations on managing allergic reactions."
+    },
+    {
+      "campName": "Narayanganj Dental Check-Up",
+      "image": "https://i.ibb.co/JRXVTqH/narayanganj.jpg",
+      "campFees": 160.00,
+      "dateTime": "2024-11-19T10:00:00",
+      "location": "Narayanganj",
+      "healthcareProfessionalName": "Dr. Tanvir Ahmed",
+      "participantCount": 0,
+      "description": "Focused on dental health, this camp in Narayanganj provides free dental check-ups, cleanings, and oral hygiene advice."
+    },
+    {
+      "campName": "Jessore Nutrition Awareness Camp",
+      "image": "https://i.ibb.co/FhSnrsR/jessore.webp",
+      "campFees": 175.00,
+      "dateTime": "2024-10-25T11:30:00",
+      "location": "Jessore",
+      "healthcareProfessionalName": "Dr. Fatema Khan",
+      "participantCount": 0,
+      "description": "A camp dedicated to nutrition and healthy eating habits, offering diet consultations, BMI tests, and nutritional advice in Jessore."
+    }
+  ]
+  

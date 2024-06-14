@@ -1,13 +1,11 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAuth from "../Hooks/useAuth";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Login = () => {
   const {
@@ -17,11 +15,10 @@ const Login = () => {
   } = useForm();
 
   const { googleSignIn, github, signIn } = useAuth()
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   // Navigate
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosPublic = useAxiosPublic()
   const handleLogin = (data) => {
     const { email, password } = data;
 
@@ -35,15 +32,8 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      axios
-        .post(`${import.meta.env.VITE_API_LINK}/jwt`, user, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          if (res.data.success) {
-            navigate(location?.state ? location.state : "/");
-          }
-        });
+      navigate(location?.state ? location.state : "/");
+      
     });
   };
 
@@ -62,15 +52,8 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
+        navigate(location?.state ? location.state : "/");
         
-          axiosPublic.post(`${import.meta.env.VITE_API_LINK}/jwt`, user, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            if (res.data.success) {
-              navigate(location?.state ? location.state : "/");
-            }
-          });
       })
       .catch((error) => {
         console.error(error);
@@ -89,9 +72,8 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-        axios.post(`${import.meta.env.VITE_API_LINK}/jwt`, user, {
-          withCredentials: true,
-        });
+        navigate(location?.state ? location.state : "/");
+        
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
