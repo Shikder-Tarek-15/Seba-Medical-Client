@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import {FaLocationPin, FaPeopleGroup } from "react-icons/fa6";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
@@ -68,7 +68,7 @@ const AvailableCamps = () => {
                         </div>
                         <p>{camp.description}</p>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Buy Now</button>
+                            <Link to={`/camp-details/${camp._id}`}><button  className="btn btn-primary">Details</button></Link>
                         </div>
                     </div>
                 </div>
