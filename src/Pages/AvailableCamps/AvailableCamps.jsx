@@ -12,6 +12,7 @@ const AvailableCamps = () => {
     
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState("");
+    const [layout, setLayout] = useState(true)
     const [camps, setCamps] = useState([])
     const axiosPublic = useAxiosPublic()
 
@@ -28,7 +29,7 @@ const AvailableCamps = () => {
 
     return (
         <div>
-        <h2 className="text-2xl font-bold text-center mt-8">Available Camps</h2>
+        <h2 className="text-2xl font-bold text-center mt-8 mb-5">Available Camps</h2>
         <div className="mb-8 flex flex-col md:flex-row md:justify-evenly items-center">
             <input
                 type="text"
@@ -47,8 +48,9 @@ const AvailableCamps = () => {
                 <option value="campFees">Camp Fees</option>
                 <option value="alphabeticalOrder">Alphabetical Order</option>
             </select>
+            <button onClick={()=> setLayout(!layout)} className="btn btn-secondary">Layout</button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className={`grid grid-cols-1 md:grid-cols-2  gap-5 ${layout? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
             {camps.map(camp => (
                 <div key={camp._id} className="card card-compact bg-base-100 shadow-xl">
                     <figure><img className="h-72 w-full object-cover" src={camp.image} alt="Camp" /></figure>
