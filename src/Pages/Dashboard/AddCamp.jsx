@@ -1,17 +1,38 @@
-import React from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import { CiBookmarkPlus } from "react-icons/ci";
 
-
+const imageKey = import.meta.env.VITE_imgKey;
+const imgAPI = `https://api.imgbb.com/1/upload?key=${imageKey}`
 const AddCamp = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
-
-    const onSubmit = (data) =>{
+// console.log(imageKey);
+    const onSubmit =async (data) =>{
         console.log(data);
+
+        const {name, dateTime, campFees, location, professionalName, participantName, image, description} = data;
+
+        const updateData = {name, dateTime, campFees, location, professionalName, participantName, imageData: image[0], description}
+        console.log(updateData.imageData);
+
+        const imageFile = {image: updateData.imageData}
+
+
+        const res = await axiosPublic.post(imgAPI, imageFile, {
+            headers: {
+                'content-type' : 'multipart/form-data',
+            }
+        });
+        // console.log(res.data.data); //display_url
+        console.log(res.data);
+
+        if(res.data.success){
+            console.log(res.data.data.display_url);
+
+        }
     }
     return (
         <div>
