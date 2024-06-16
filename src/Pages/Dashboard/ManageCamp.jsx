@@ -4,12 +4,14 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ManageCamp = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
+    const [selectedCamp, setSelectedCamp] = useState(null);
     
-    const {data: camps=[],refetch } = useQuery({
+    const {data: camps=[],refetch, isLoading } = useQuery({
         queryKey: ['camps'],
         queryFn: async() =>{
             const res = await axiosPublic.get("/camps");
@@ -37,12 +39,14 @@ const ManageCamp = () => {
             confirmButtonText: "Yes, delete it!"
           }).then( async(result) => {
             if (result.isConfirmed) {
-                const res =  await axiosSecure.delete(`/camps/${campId}`);
+                const res =  await axiosSecure.delete(`/delete-camp/${campId}`);
                 console.log(res.data);
                 Swal.fire({
                  title: "Deleted!",
                  text: "Camp has been deleted.",
-                 icon: "success"
+                 icon: "success",
+                 showConfirmButton: false,
+                 timer: 1000
                });
                  refetch();
             }
@@ -55,6 +59,11 @@ const ManageCamp = () => {
     return (
         <div>
             <h2 className="font-bold text-3xl text-center mb-6">Manage Camps</h2>
+           <div className="flex justify-center items-center">
+           {
+                isLoading && <span className="loading loading-ring loading-lg text-center"></span>
+            }
+           </div>
             <div className="overflow-x-auto">
   <table className="table table-xs">
     <thead>
