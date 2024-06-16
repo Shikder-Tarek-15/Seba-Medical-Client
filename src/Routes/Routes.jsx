@@ -10,6 +10,7 @@ import CampDetails from "../Pages/AvailableCamps/CampDetails";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Profile from "../Shared/Profile/Profile";
+import AddCamp from "../Pages/Dashboard/AddCamp";
 
   const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ import Profile from "../Shared/Profile/Profile";
         {
           path: 'profile',
           element: <Profile/>
+        },
+        {
+          path: "addCamp",
+          element: <AddCamp/>
         }
       ]
     }
