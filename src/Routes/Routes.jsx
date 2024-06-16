@@ -8,6 +8,7 @@ import Login from "../Authentication/Login";
 import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
 import CampDetails from "../Pages/AvailableCamps/CampDetails";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
   const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ import PrivateRoute from "./PrivateRoute";
         }
       ]
     },
+    {
+      path: 'dashboard',
+      element: <Dashboard/>
+    }
   ]);
 
 
