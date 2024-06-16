@@ -14,7 +14,7 @@ const AddCamp = () => {
     const onSubmit =async (data) =>{
         console.log(data);
 
-        const {name, dateTime, campFees, location, professionalName, participantName, image, description} = data;
+        const {campName, dateTime, campFees, location, healthcareProfessionalName, participantCount, image, description} = data;
 
         
 
@@ -32,7 +32,7 @@ const AddCamp = () => {
 
         if(res.data.success){
             console.log(res.data.data.display_url);
-            const updateData = {name, dateTime, campFees, location, professionalName, participantName, imageData: res.data.data.display_url, description}
+            const updateData = {campName, dateTime, campFees, location, healthcareProfessionalName, participantCount, image: res.data.data.display_url, description}
 
             const update = await axiosSecure.post('/camps', updateData);
             if(update.data.insertedId){
@@ -59,7 +59,7 @@ const AddCamp = () => {
             <input
               type="text"
               placeholder="Camp Name"
-              {...register("name", { required: true })}
+              {...register("campName", { required: true })}
               required
               className="input input-bordered w-full"
             />
@@ -73,7 +73,7 @@ const AddCamp = () => {
               <input
                 type="datetime-local"
                 placeholder="Date & Time"
-                {...register("date", { required: true })}
+                {...register("dateTime", { required: true })}
                 className="input input-bordered w-full"
               />
             </div>
@@ -113,7 +113,7 @@ const AddCamp = () => {
               <input
                 type="number"
                 placeholder="Healthcare Professional Name"
-                {...register("professionalName", { required: true })}
+                {...register("healthcareProfessionalName", { required: true })}
                 className="input input-bordered w-full"
               />
             </div>
@@ -136,7 +136,7 @@ const AddCamp = () => {
               <span className="label-text">Camp Details</span>
             </label>
             <textarea
-              {...register("campDetails")}
+              {...register("description")}
               className="textarea textarea-bordered h-24"
               placeholder="Description"
             ></textarea>
