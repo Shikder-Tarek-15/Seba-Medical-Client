@@ -7,6 +7,7 @@ import Register from "../Authentication/Register";
 import Login from "../Authentication/Login";
 import AvailableCamps from "../Pages/AvailableCamps/AvailableCamps";
 import CampDetails from "../Pages/AvailableCamps/CampDetails";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ import CampDetails from "../Pages/AvailableCamps/CampDetails";
         },
         {
           path: "/camp-details/:campId",
-          element: <CampDetails/>,
+          element: <PrivateRoute><CampDetails/></PrivateRoute>,
           loader: ({params})=> fetch(`http://localhost:5000/camp-details/${params.campId}`)
         }
       ]
