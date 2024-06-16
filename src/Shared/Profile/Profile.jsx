@@ -105,7 +105,7 @@ const Profile = () => {
 
     <div className="modal-action">
      
-        <button className="btn">Close</button>
+        <button className="btn">Update</button>
      
     </div>
     </form>
