@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
@@ -15,10 +16,10 @@ const AddCamp = () => {
 
         const {name, dateTime, campFees, location, professionalName, participantName, image, description} = data;
 
-        const updateData = {name, dateTime, campFees, location, professionalName, participantName, imageData: image[0], description}
-        console.log(updateData.imageData);
+        
 
-        const imageFile = {image: updateData.imageData}
+        const imageFile = {image: image[0]}
+        console.log(imageFile);
 
 
         const res = await axiosPublic.post(imgAPI, imageFile, {
@@ -31,6 +32,19 @@ const AddCamp = () => {
 
         if(res.data.success){
             console.log(res.data.data.display_url);
+            const updateData = {name, dateTime, campFees, location, professionalName, participantName, imageData: res.data.data.display_url, description}
+
+            const update = await axiosSecure.post('/camps', updateData);
+            if(update.data.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Camp has been added",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  
+            }
 
         }
     }
