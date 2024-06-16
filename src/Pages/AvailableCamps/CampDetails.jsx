@@ -3,12 +3,17 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const CampDetails = () => {
     const camp = useLoaderData();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure()
-    const { campName, image, campFees, dateTime, location, healthcareProfessionalName, participantCount, description } = camp;
+    const {_id, campName, image, campFees, dateTime, location, healthcareProfessionalName, participantCount, description } = camp;
+    const [currentParticipantCount, setCurrentParticipantCount] = useState(participantCount);
+
+    
 
     // Initialize React Hook Form
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -25,6 +30,7 @@ const CampDetails = () => {
         const res = await axiosSecure.post('/participant_camp', data);
         console.log(res.data);
         if(res.data.insertedId){
+          setCurrentParticipantCount(prevCount => prevCount + 1);
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -32,6 +38,9 @@ const CampDetails = () => {
             showConfirmButton: false,
             timer: 1500
           });
+
+          const patch = await axiosSecure.patch(`/camp_patch/${_id}`);
+          console.log(patch.data);
         }
         
         // Close the modal after submission
@@ -57,7 +66,7 @@ const CampDetails = () => {
                     </p>
                     <p>Date: {new Date(dateTime).toLocaleDateString()}</p>
                     <p className="mt-2 mb-2">
-                        <span className="font-bold">Participant: </span>{participantCount}
+                        <span className="font-bold">Participant: </span>{currentParticipantCount}
                     </p>
                     <p className="text-xl font-bold mb-2">
                         <span className="font-black">Fees: </span>{campFees} Taka
