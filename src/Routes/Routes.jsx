@@ -13,6 +13,7 @@ import Profile from "../Shared/Profile/Profile";
 import AddCamp from "../Pages/Dashboard/AddCamp";
 import ManageCamp from "../Pages/Dashboard/ManageCamp";
 import Analytics from "../Pages/Dashboard/UserDashboard/Analytics";
+import RegisteredCamps from "../Pages/Dashboard/UserDashboard/RegisteredCamps";
 
   const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ import Analytics from "../Pages/Dashboard/UserDashboard/Analytics";
         {
           path: 'analytics',
           element: <Analytics/>
+        },
+        {
+          path: 'registerCamps',
+          element: <RegisteredCamps/>
         }
       ]
     }
