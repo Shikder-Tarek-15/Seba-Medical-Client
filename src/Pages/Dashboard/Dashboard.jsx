@@ -5,10 +5,13 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { MdAnalytics, MdAppRegistration, MdOutlinePayment } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
 import { RiAddBoxFill } from "react-icons/ri";
+import useAdmin from '../../Hooks/useAdmin';
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const isAdmin = false;
+    // const [isAdmin] = useAdmin()
+    // console.log('isAdmin', isAdmin);
     return (
         <div className="flex">
         {/* dashboard side bar */}
