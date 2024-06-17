@@ -48,7 +48,7 @@ const Dashboard = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/analytics ">
+                  <NavLink to="/dashboard/analytics">
                   <MdAnalytics />
                     Analytics
                   </NavLink>
