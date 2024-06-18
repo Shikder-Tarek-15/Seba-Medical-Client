@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { MdCancel, MdFileDownloadDone } from "react-icons/md";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const ManageRegisterCamp = () => {
     const {user} = useAuth()
@@ -51,7 +52,21 @@ const ManageRegisterCamp = () => {
 
 
 
-
+      const handleConfirmation = async (camp) => {
+        if (camp.paymentStatus === 'Paid') {
+            const res = await axiosSecure.put(`/update-confirmation/${camp._id}`);
+            if (res.data.modifiedCount > 0) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "The camp has been confirmed",
+                showConfirmButton: false,
+                timer: 1500
+              });
+                refetch();
+            }
+        } 
+    };
 
        
 
@@ -79,7 +94,21 @@ const ManageRegisterCamp = () => {
             <td>{camp.campName}</td> 
             <td>{camp.campFees}</td> 
             <td>{camp?.paymentStatus ? camp.paymentStatus : 'Unpaid'}</td> 
-            <td>{camp?.confirmationStatus ? camp.confirmationStatus : 'Pending'}</td>   
+            <td>
+                                    {camp.confirmationStatus === 'Confirmed' ? (
+                                        <span className="text-green-600">Confirmed</span>
+                                    ) : (
+                                        <button
+                                            className={` text-white py-1 px-2 rounded ${camp.paymentStatus !== 'Paid' ? 'bg-red-500' : 'bg-yellow-500'}`}
+                                            onClick={() => handleConfirmation(camp)}
+                                            disabled={camp.paymentStatus !== 'Paid'}
+                                        >
+                                            {
+                                              camp.confirmationStatus? 'Confirmed' : 'Pending'
+                                            }
+                                        </button>
+                                    )}
+                                </td>   
             <td>{camp?.paymentStatus ? <button disabled className="text-xl"><MdFileDownloadDone /></button> : 
             <button
              onClick={()=>handleDelete(camp._id)} 

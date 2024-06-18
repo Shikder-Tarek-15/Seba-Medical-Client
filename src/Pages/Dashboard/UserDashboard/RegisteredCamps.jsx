@@ -51,7 +51,7 @@ import Swal from "sweetalert2";
 
         return (
             <div>
-                <h2 className="text-2xl font-bold mb-4">Registered Camps</h2>
+                <h2 className="text-2xl font-bold text-center mb-4">Registered Camps</h2>
                 <table className="min-w-full bg-white">
                     <thead>
                         <tr>
