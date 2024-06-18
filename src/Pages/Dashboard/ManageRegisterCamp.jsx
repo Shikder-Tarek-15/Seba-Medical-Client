@@ -48,13 +48,28 @@ const ManageRegisterCamp = () => {
           refetch()
       }
         
-      })}
+      })
+    }
 
 
 
       const handleConfirmation = async (camp) => {
         if (camp.paymentStatus === 'Paid') {
-            const res = await axiosSecure.put(`/update-confirmation/${camp._id}`);
+
+
+
+
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to undo this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, confirm it!"
+          }).then( async(result) => {
+            if (result.isConfirmed) {
+              const res = await axiosSecure.put(`/update-confirmation/${camp._id}`);
             if (res.data.modifiedCount > 0) {
               Swal.fire({
                 position: "top-end",
@@ -65,6 +80,13 @@ const ManageRegisterCamp = () => {
               });
                 refetch();
             }
+          }
+            
+          })
+
+
+
+            
         } 
     };
 

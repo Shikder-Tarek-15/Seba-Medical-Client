@@ -21,7 +21,7 @@ const ManageCamp = () => {
         queryKey: ['camps'],
         queryFn: async() =>{
             const res = await axiosPublic.get("/camps");
-            // console.log(res.data);
+            console.log(res.data);
          return res.data
         }
     })
@@ -31,7 +31,7 @@ const ManageCamp = () => {
 
     const handleEdit = (camp) => {
         setSelectedCamp(camp);
-        reset(camp); // Reset form with the camp data
+        reset(camp); 
         document.getElementById('edit_modal').showModal();
     };
 
@@ -185,7 +185,7 @@ const ManageCamp = () => {
                                 className="textarea textarea-bordered w-full max-w-xs"
                             />
                         </label>
-                        <label className="form-control w-full max-w-xs">
+                        {/* <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Image</span>
                             </div>
@@ -194,7 +194,7 @@ const ManageCamp = () => {
                                 type="file"
                                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                             />
-                        </label>
+                        </label> */}
 
                         <div className="modal-action">
                             <button type="submit" className="btn btn-primary">Save</button>
