@@ -62,11 +62,11 @@ import RegisteredCamps from "../Pages/Dashboard/UserDashboard/RegisteredCamps";
         // Participant Route
         {
           path: 'analytics',
-          element: <Analytics/>
+          element: <PrivateRoute><Analytics/></PrivateRoute>
         },
         {
           path: 'registerCamps',
-          element: <RegisteredCamps/>
+          element: <PrivateRoute><RegisteredCamps/></PrivateRoute>
         }
       ]
     }
