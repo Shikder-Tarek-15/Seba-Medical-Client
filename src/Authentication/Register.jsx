@@ -11,7 +11,7 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Register = () => {
     const axiosPublic = useAxiosPublic()
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   // Navigate
   const location = useLocation();
   const navigate = useNavigate();

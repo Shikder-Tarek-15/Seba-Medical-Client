@@ -1,4 +1,4 @@
-    import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
+    import {  useQuery, useQueryClient } from "@tanstack/react-query";
     import useAxiosSecure from "../../../Hooks/useAxiosSecure";
     import useAuth from "../../../Hooks/useAuth";
     import Payment from "./Payment/Payment";
@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
     const queryClient = useQueryClient();
         const [selectedCamp, setSelectedCamp] = useState(null);
-        const { data: registeredCamps, isLoading, refetch } = useQuery({
+        const { data: registeredCamps, isLoading } = useQuery({
             queryKey: ['participant', user.email],
             queryFn: async () => {
                 const res = await axiosSecure.post(`participant/${user.email}`);

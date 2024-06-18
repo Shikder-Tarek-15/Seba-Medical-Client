@@ -3,7 +3,6 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { MdCancel, MdFileDownloadDone } from "react-icons/md";
 import Swal from "sweetalert2";
-import { useState } from "react";
 
 const ManageRegisterCamp = () => {
     const {user} = useAuth()

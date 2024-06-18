@@ -9,8 +9,8 @@ import { useForm } from "react-hook-form";
 import moment from 'moment'
 
 
-const imageKey = import.meta.env.VITE_imgKey;
-const imgAPI = `https://api.imgbb.com/1/upload?key=${imageKey}`;
+// const imageKey = import.meta.env.VITE_imgKey;
+// const imgAPI = `https://api.imgbb.com/1/upload?key=${imageKey}`;
 const ManageCamp = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()

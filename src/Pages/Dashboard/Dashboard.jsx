@@ -1,6 +1,4 @@
-import React from 'react';
-import { FaBook, FaHome, FaList, FaSearch, FaUtensils } from 'react-icons/fa';
-import { FaPersonRifle } from 'react-icons/fa6';
+import { FaBook, FaHome, FaList, FaSearch } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import { MdAnalytics, MdAppRegistration, MdOutlinePayment } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
@@ -9,8 +7,8 @@ import useAdmin from '../../Hooks/useAdmin';
 
 
 const Dashboard = () => {
-    const isAdmin = false;
-    // const [isAdmin] = useAdmin()
+    // const isAdmin = false;
+    const [isAdmin] = useAdmin()
     // console.log('isAdmin', isAdmin);
     return (
         <div className="flex">

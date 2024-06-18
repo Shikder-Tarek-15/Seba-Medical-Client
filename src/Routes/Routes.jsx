@@ -16,6 +16,7 @@ import Analytics from "../Pages/Dashboard/UserDashboard/Analytics";
 import RegisteredCamps from "../Pages/Dashboard/UserDashboard/RegisteredCamps";
 import ManageRegisterCamp from "../Pages/Dashboard/ManageRegisterCamp";
 import PaymentHistory from "../Pages/Dashboard/UserDashboard/PaymentHistory";
+import AdminRoute from "./AdminRoute";
 
   const router = createBrowserRouter([
     {
@@ -50,20 +51,20 @@ import PaymentHistory from "../Pages/Dashboard/UserDashboard/PaymentHistory";
       children: [
         {
           path: 'profile',
-          element: <Profile/>
+          element: <PrivateRoute><Profile/></PrivateRoute>
         },
         // admin route
         {
           path: "addCamp",
-          element: <AddCamp/>
+          element: <AdminRoute><AddCamp/></AdminRoute>
         },
         {
           path: 'manageCamps',
-          element: <ManageCamp/>
+          element: <AdminRoute><ManageCamp/></AdminRoute>
         },
         {
           path: 'manageRegisterCamps',
-          element: <PrivateRoute><ManageRegisterCamp/></PrivateRoute>
+          element: <AdminRoute><ManageRegisterCamp/></AdminRoute>
         },
         // Participant Route
         {

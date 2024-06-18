@@ -88,6 +88,7 @@ const Profile = () => {
   </div>
   <input
   {...register("name", { required: true })}
+  defaultValue={user.displayName}
   type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
 </label>
 
