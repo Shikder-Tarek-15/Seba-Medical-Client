@@ -3,8 +3,8 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import moment from "moment";
 
 const CampDetails = () => {
     const camp = useLoaderData();
@@ -64,7 +64,7 @@ const CampDetails = () => {
                     <p className="pt-5 mb-2">
                         <span className="font-bold">Location: </span> {location}
                     </p>
-                    <p>Date: {new Date(dateTime).toLocaleDateString()}</p>
+                    <p><span className="font-bold">Date & Time:</span> {moment(dateTime).format('lll')}</p>
                     <p className="mt-2 mb-2">
                         <span className="font-bold">Participant: </span>{currentParticipantCount}
                     </p>
@@ -72,7 +72,7 @@ const CampDetails = () => {
                         <span className="font-black">Fees: </span>{campFees} Taka
                     </p>
                     <div className="flex justify-end">
-                        <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_5').showModal()}>open modal</button>
+                        <button className="btn btn-primary" onClick={() => document.getElementById('my_modal_5').showModal()}>Join Camp</button>
                     </div>
                 </div>
             </div>

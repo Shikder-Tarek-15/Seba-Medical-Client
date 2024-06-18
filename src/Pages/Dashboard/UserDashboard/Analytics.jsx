@@ -8,7 +8,7 @@ const Analytics = () => {
     const axiosSecure = useAxiosSecure();
 
     
-    const { data, isLoading } = useQuery({
+    const { data=[], isLoading } = useQuery({
         queryKey: ['participant', user.email],
         queryFn: async () => {
             const res = await axiosSecure.post(`participant/${user.email}`);
@@ -18,7 +18,7 @@ const Analytics = () => {
 
    
     if (isLoading) {
-        return <span className="loading loading-ring loading-lg"></span>;
+        return <div className='text-center'><span className="loading loading-ring loading-lg"></span></div>;
     }
 
     

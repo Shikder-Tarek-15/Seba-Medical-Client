@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import moment from 'moment'
 
 
 const imageKey = import.meta.env.VITE_imgKey;
@@ -114,7 +115,7 @@ const ManageCamp = () => {
         camps.map((camp, idx)=> <tr key={camp._id}>
             <th>{idx+1}</th> 
             <td>{camp.campName}</td> 
-            <td>{camp.dateTime}</td> 
+            <td>{moment(camp.dateTime).format('lll')}</td> 
             <td>{camp.location}</td> 
             <td>{camp.healthcareProfessionalName}</td> 
             <td><button onClick={()=>handleEdit(camp)}><FaRegEdit className="text-xl"/></button></td> 

@@ -16,9 +16,6 @@ const CheckoutForm = ({ camp,onPaymentSuccess }) => {
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
 
-  console.log('tarek', stripe, elements);
-  console.log('condition', !stripe, !elements);
-
   useEffect(() => {
     axiosSecure
       .post("/create-payment-intent", { campFees: campFees })
@@ -26,9 +23,7 @@ const CheckoutForm = ({ camp,onPaymentSuccess }) => {
         console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       })
-      .then(error=>{
-        console.log('hello', error);
-      })
+      
   }, [axiosSecure, campFees]);
 
   const handleSubmit = async (e) => {

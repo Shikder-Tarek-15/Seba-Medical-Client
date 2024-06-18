@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {FaLocationPin, FaPeopleGroup } from "react-icons/fa6";
 import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import moment from "moment";
 
 
 const AvailableCamps = () => {
@@ -56,7 +57,7 @@ const AvailableCamps = () => {
                     <figure><img className="h-72 w-full object-cover" src={camp.image} alt="Camp" /></figure>
                     <div className="card-body">
                         <div className="flex justify-between w-auto">
-                            <p>{new Date(camp.dateTime).toLocaleDateString()}</p>
+                            <p>{moment(camp.dateTime).format('lll')}</p>
                             <p className="flex gap-2 items-center">
                                 <FaLocationPin /> {camp.location}
                             </p>

@@ -3,6 +3,7 @@
     import useAuth from "../../../Hooks/useAuth";
     import Payment from "./Payment/Payment";
     import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 
@@ -27,6 +28,13 @@
 
         const handlePaymentSuccess = () => {
             setSelectedCamp(null);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your Payment Successfull",
+                showConfirmButton: false,
+                timer: 1500
+              });
             queryClient.invalidateQueries(['registeredCamps', user.email]);
         };
         
@@ -34,6 +42,11 @@
             setSelectedCamp(camp);
             console.log("shikder", camp);
         };
+
+        // Feedback
+        const handleFeedback = () =>{
+            console.log('a');
+        }
 
 
         return (
@@ -76,7 +89,7 @@
                                     {camp?.paymentStatus === 'Paid' && camp?.confirmationStatus === 'Confirmed' && (
                                         <button
                                             className="bg-yellow-500 text-white py-1 px-2 rounded"
-                                            // onClick={() => handleFeedback(camp._id)}
+                                            onClick={() => handleFeedback(camp._id)}
                                         >
                                             Give Feedback
                                         </button>
@@ -84,7 +97,7 @@
                                 </td>
                                 <td className="py-2 px-4 border-b">
                                     <button
-                                        className="bg-red-500 text-white py-1 px-2 rounded"
+                                        className={` text-white py-1 px-2 rounded ${camp?.paymentStatus === 'Paid' ? 'bg-gray-300' : 'bg-red-500'}`}
                                         // onClick={() => handleCancel(camp._id)}
                                         disabled={camp?.paymentStatus === 'Paid'}
                                     >
@@ -96,13 +109,9 @@
                     </tbody>
                 </table>
 
-                {/* {selectedCamp && (
-                    <Elements stripe={stripePromise}>
-                        <PaymentForm camp={selectedCamp} onPaymentSuccess={() => paymentMutation.mutate({ campId: selectedCamp._id, participantEmail: user.email })} />
-                    </Elements>
-                )}
+               
 
-                {showFeedbackForm && (
+                {/* {showFeedbackForm && (
                     <FeedbackForm
                         campId={selectedCamp}
                         onClose={() => setShowFeedbackForm(false)}

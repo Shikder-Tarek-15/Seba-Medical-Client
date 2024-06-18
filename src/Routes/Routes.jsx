@@ -14,6 +14,7 @@ import AddCamp from "../Pages/Dashboard/AddCamp";
 import ManageCamp from "../Pages/Dashboard/ManageCamp";
 import Analytics from "../Pages/Dashboard/UserDashboard/Analytics";
 import RegisteredCamps from "../Pages/Dashboard/UserDashboard/RegisteredCamps";
+import ManageRegisterCamp from "../Pages/Dashboard/ManageRegisterCamp";
 
   const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ import RegisteredCamps from "../Pages/Dashboard/UserDashboard/RegisteredCamps";
         {
           path: 'manageCamps',
           element: <ManageCamp/>
+        },
+        {
+          path: 'manageRegisterCamps',
+          element: <PrivateRoute><ManageRegisterCamp/></PrivateRoute>
         },
         // Participant Route
         {
