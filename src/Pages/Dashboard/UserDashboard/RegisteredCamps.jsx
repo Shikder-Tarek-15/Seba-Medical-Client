@@ -51,7 +51,7 @@
             const description = event.target.description.value;
             console.log('tarek', rating);
 
-            const feedback = {rating, description, campId: camp._id, campName: camp.campName, Name: user.displayName}
+            const feedback = {rating, description, campId: camp._id, campName: camp.campName, Name: user.displayName, email: user.email}
             console.log(feedback);
 
             axiosSecure.post('/feedback', feedback)
@@ -59,8 +59,8 @@
                 console.log(res.data);
                 if(res.data.insertedId){
                     Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
+                        title: "Feedback!",
+                        text: "Feedback has been submitted",
                         icon: "success",
                         showConfirmButton: false,
                         timer: 1000
