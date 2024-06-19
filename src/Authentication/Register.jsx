@@ -20,7 +20,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser ,updateUserProfile} = useAuth();
+  const { createUser ,updateUserProfile, user} = useAuth();
   console.log("I am", createUser);
   const [error, setError] = useState("");
 
@@ -79,6 +79,10 @@ const Register = () => {
             })
     
   };
+
+  if(user){
+    navigate('/')
+  }
   return (
     <div className="flex justify-center items-center  h-screen">
       <Helmet>

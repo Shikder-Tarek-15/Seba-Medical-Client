@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const imageKey = import.meta.env.VITE_imgKey;
@@ -65,6 +66,9 @@ const Profile = () => {
 
     return (
         <>
+         <Helmet>
+        <title>Seba Medical | Profile</title>
+      </Helmet>
         <div className="flex flex-col justify-center max-w-full h-full p-6 shadow-md rounded-xl sm:px-12">
 	<img src={user?.photoURL} alt="" className="w-32 h-32 mx-auto rounded-full bg-gray-500 aspect-square" />
 	<div className="space-y-4 text-center divide-y ">

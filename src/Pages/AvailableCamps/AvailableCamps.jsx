@@ -5,6 +5,7 @@ import {FaLocationPin, FaPeopleGroup } from "react-icons/fa6";
 import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import moment from "moment";
+import { Helmet } from "react-helmet-async";
 
 
 const AvailableCamps = () => {
@@ -30,6 +31,9 @@ const AvailableCamps = () => {
 
     return (
         <div>
+             <Helmet>
+        <title>Seba Medical | Available Camps</title>
+      </Helmet>
         <h2 className="text-2xl font-bold text-center mt-8 mb-5">Available Camps</h2>
         <div className="mb-8 flex flex-col md:flex-row md:justify-evenly items-center">
             <input

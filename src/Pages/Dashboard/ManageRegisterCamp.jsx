@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { MdCancel, MdFileDownloadDone } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageRegisterCamp = () => {
     const {user} = useAuth()
@@ -93,6 +94,9 @@ const ManageRegisterCamp = () => {
 
     return (
         <div>
+          <Helmet>
+        <title>Seba Medical | Manage Register Camp</title>
+      </Helmet>
             <h2 className="font-bold text-2xl text-center mb-7">Manage Register Camp</h2>
              <div className="overflow-x-auto">
   <table className="table table-xs">

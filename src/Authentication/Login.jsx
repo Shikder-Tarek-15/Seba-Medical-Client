@@ -14,7 +14,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { googleSignIn, github, signIn } = useAuth()
+  const { googleSignIn, github, signIn, user } = useAuth()
   const [show, setShow] = useState(false);
   // Navigate
   const navigate = useNavigate();
@@ -80,6 +80,10 @@ const Login = () => {
         console.error(error);
       });
   };
+
+  if(user){
+    navigate('/')
+  }
 
   return (
     <div className="flex justify-center items-center h-screen">

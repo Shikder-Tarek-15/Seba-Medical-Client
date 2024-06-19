@@ -124,7 +124,8 @@ import Swal from "sweetalert2";
                                     {camp?.paymentStatus === 'Paid' && camp?.confirmationStatus === 'Confirmed' && (
                                         <button
                                             className="bg-yellow-500 text-white py-1 px-2 rounded"
-                                            onClick={() => handleFeedback(camp._id)}
+                                            // onClick={() => handleFeedback(camp._id)}
+                                            onClick={()=>document.getElementById('feedback_modal').showModal()}
                                         >
                                             Give Feedback
                                         </button>
@@ -138,6 +139,34 @@ import Swal from "sweetalert2";
                                     >
                                         Cancel
                                     </button>
+
+
+
+                                    {/* Modal */}
+                                    <dialog id="feedback_modal" className="modal">
+  <div className="modal-box">
+    <form>
+    <div className="rating">
+  <input type="radio" value={1} name="rating-4" className="mask mask-star-2 bg-green-500" />
+  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
+  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
+  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
+  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
+</div>
+    <div className="modal-action">
+      
+        {/* if there is a button in form, it will close the modal */}
+        <button onClick={()=>handleFeedback(camp._id)} className="btn">Submit</button>
+      
+    </div>
+    </form>
+  </div>
+</dialog>
+{/* Modal Close  */}
+
+
+
+
                                 </td>
                             </tr>
                         ))}

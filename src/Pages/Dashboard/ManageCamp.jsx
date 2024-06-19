@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import moment from 'moment'
+import { Helmet } from "react-helmet-async";
 
 
 // const imageKey = import.meta.env.VITE_imgKey;
@@ -91,6 +92,9 @@ const ManageCamp = () => {
     }
     return (
         <div>
+            <Helmet>
+        <title>Seba Medical | Manage Camps</title>
+      </Helmet>
             <h2 className="font-bold text-3xl text-center mb-6">Manage Camps</h2>
            <div className="flex justify-center items-center">
            {

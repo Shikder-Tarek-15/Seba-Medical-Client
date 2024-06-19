@@ -3,6 +3,7 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import { CiBookmarkPlus } from "react-icons/ci";
+import { Helmet } from 'react-helmet-async';
 
 const imageKey = import.meta.env.VITE_imgKey;
 const imgAPI = `https://api.imgbb.com/1/upload?key=${imageKey}`
@@ -50,6 +51,9 @@ const AddCamp = () => {
     }
     return (
         <div>
+          <Helmet>
+        <title>Seba Medical | Add Camp</title>
+      </Helmet>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control w-full my-6">
