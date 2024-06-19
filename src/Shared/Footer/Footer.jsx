@@ -1,7 +1,8 @@
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <div className="bg-base-200">
+            <footer className="footer p-10 container mx-auto text-base-content mt-12">
   <aside>
     <img className="w-16 h-16" src="/medical-camp.png" alt="" />
     <p>Seba Medical<br/>Providing reliable health service since 2024</p>
@@ -27,6 +28,7 @@ const Footer = () => {
     <a className="link link-hover">Cookie policy</a>
   </nav>
 </footer>
+        </div>
     );
 };
 
