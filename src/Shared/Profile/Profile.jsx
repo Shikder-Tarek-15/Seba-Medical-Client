@@ -76,7 +76,7 @@ const Profile = () => {
 			<h2 className="text-xl font-semibold sm:text-2xl">{user?.displayName}</h2>
 			<p className="px-5 text-xs sm:text-base ">Email: {user?.email}</p>
             <div className="divider"></div> 
-            <button className="btn btn-secondary" onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</button>
+            <button className="btn btn-secondary" onClick={()=>document.getElementById('my_modal_1').showModal()}>Update Profile</button>
 		</div>
 		
 	</div>

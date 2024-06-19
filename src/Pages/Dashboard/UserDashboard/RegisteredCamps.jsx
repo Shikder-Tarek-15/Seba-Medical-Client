@@ -3,15 +3,17 @@
     import useAuth from "../../../Hooks/useAuth";
     import Payment from "./Payment/Payment";
     import { useState } from "react";
-import Swal from "sweetalert2";
+    import Swal from "sweetalert2";
+    import { Rating } from '@smastrom/react-rating'
+    import '@smastrom/react-rating/style.css'
 
 
 
     const RegisteredCamps = () => {
         const { user } = useAuth();
         const axiosSecure = useAxiosSecure();
-
-    const queryClient = useQueryClient();
+        const [rating, setRating] = useState(0)
+          const queryClient = useQueryClient();
         const [selectedCamp, setSelectedCamp] = useState(null);
         const { data: registeredCamps, isLoading, refetch } = useQuery({
             queryKey: ['participant', user.email],
@@ -44,8 +46,29 @@ import Swal from "sweetalert2";
         };
 
         // Feedback
-        const handleFeedback = () =>{
-            console.log('a');
+        const handleFeedback = (event, camp) =>{
+            event.preventDefault();
+            const description = event.target.description.value;
+            console.log('tarek', rating);
+
+            const feedback = {rating, description, campId: camp._id, campName: camp.campName, Name: user.displayName}
+            console.log(feedback);
+
+            axiosSecure.post('/feedback', feedback)
+            .then(res=>{
+                console.log(res.data);
+                if(res.data.insertedId){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1000
+                      });
+                      document.getElementById('feedback_modal').close()
+                }
+            })
+
         }
 
 
@@ -145,19 +168,18 @@ import Swal from "sweetalert2";
                                     {/* Modal */}
                                     <dialog id="feedback_modal" className="modal">
   <div className="modal-box">
-    <form>
-    <div className="rating">
-  <input type="radio" value={1} name="rating-4" className="mask mask-star-2 bg-green-500" />
-  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-  <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-</div>
+    <h2 className="text-center text-2xl font-bold">Give Feedback</h2>
+    <form onSubmit={()=> handleFeedback(event, camp)}>
+        <p className="font-bold ">Rating</p>
+    <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
+    <label className="form-control">
+  <div className="label">
+    <span className="label-text">Description</span>
+  </div>
+  <textarea name="description" className="textarea textarea-bordered h-24" placeholder="Description"></textarea>
+</label>
     <div className="modal-action">
-      
-        {/* if there is a button in form, it will close the modal */}
-        <button onClick={()=>handleFeedback(camp._id)} className="btn">Submit</button>
-      
+        <button className="btn btn-primary">Submit</button>     
     </div>
     </form>
   </div>
