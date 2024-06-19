@@ -43,7 +43,7 @@ const AddCamp = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
-                  
+                  reset()
             }
 
         }

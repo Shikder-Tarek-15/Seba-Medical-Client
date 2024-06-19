@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
     const queryClient = useQueryClient();
         const [selectedCamp, setSelectedCamp] = useState(null);
-        const { data: registeredCamps, isLoading } = useQuery({
+        const { data: registeredCamps, isLoading, refetch } = useQuery({
             queryKey: ['participant', user.email],
             queryFn: async () => {
                 const res = await axiosSecure.post(`participant/${user.email}`);
@@ -46,6 +46,41 @@ import Swal from "sweetalert2";
         // Feedback
         const handleFeedback = () =>{
             console.log('a');
+        }
+
+
+        const handleCancel = id =>{
+            
+
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    axiosSecure.delete(`/participant_camp/${id}`)
+                    .then(res=>{
+                        if(res.data.deletedCount){
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success",
+                                showConfirmButton: false,
+                                timer: 1000
+                              });
+                              refetch()
+                        }
+                    })
+                }
+              });
+
+
+
         }
 
 
@@ -98,7 +133,7 @@ import Swal from "sweetalert2";
                                 <td className="py-2 px-4 border-b">
                                     <button
                                         className={` text-white py-1 px-2 rounded ${camp?.paymentStatus === 'Paid' ? 'bg-gray-300' : 'bg-red-500'}`}
-                                        // onClick={() => handleCancel(camp._id)}
+                                        onClick={() => handleCancel(camp._id)}
                                         disabled={camp?.paymentStatus === 'Paid'}
                                     >
                                         Cancel

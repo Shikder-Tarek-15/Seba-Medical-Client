@@ -56,7 +56,8 @@ import AdminRoute from "./AdminRoute";
         // admin route
         {
           path: "addCamp",
-          element: <AdminRoute><AddCamp/></AdminRoute>
+          // element: <AdminRoute><AddCamp/></AdminRoute>
+          element: <AddCamp/> 
         },
         {
           path: 'manageCamps',
