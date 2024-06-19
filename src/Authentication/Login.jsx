@@ -34,7 +34,20 @@ const Login = () => {
       });
       navigate(location?.state ? location.state : "/");
       
-    });
+    })
+    .catch(error=>{
+      console.log(error);
+      if(error){
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Login faild",
+          text: `Login Faild`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    })
   };
 
   const handleGoogle = () => {

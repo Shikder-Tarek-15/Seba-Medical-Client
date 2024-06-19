@@ -17,11 +17,13 @@ import RegisteredCamps from "../Pages/Dashboard/UserDashboard/RegisteredCamps";
 import ManageRegisterCamp from "../Pages/Dashboard/ManageRegisterCamp";
 import PaymentHistory from "../Pages/Dashboard/UserDashboard/PaymentHistory";
 import AdminRoute from "./AdminRoute";
+import Error from "../Pages/Error/Error";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root/>,
+      errorElement: <Error/>,
       children: [
         {
           path: "/",
@@ -48,6 +50,7 @@ import AdminRoute from "./AdminRoute";
     {
       path: 'dashboard',
       element: <Dashboard/>,
+      errorElement: <Error/>,
       children: [
         {
           path: 'profile',
