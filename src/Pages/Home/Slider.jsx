@@ -23,7 +23,7 @@ const Slider = () => {
     >
       {/* Slide - 1 */}
       <SwiperSlide>
-        <div className="flex flex-col md:flex-row gap-5 items-center justify-around bg-base-300 p-5 rounded-xl">
+        <div className="flex flex-col md:flex-row gap-5 items-center justify-around bg-base-200 p-5 rounded-xl">
           <div className=" space-y-5">
             <h2 className="text-4xl font-bold">Clear Vision Restored</h2>
             <p className="w-[400px] text-xl">Mr. Rahman, aged 72, received free cataract surgery at our eye care camp. His joy was boundless as he saw his grandchildren clearly for the first time.</p>
@@ -38,7 +38,7 @@ const Slider = () => {
       </SwiperSlide>
       {/* Slide - 2 */}
       <SwiperSlide>
-        <div className="flex flex-col md:flex-row gap-5 items-center justify-around bg-base-300 p-5 rounded-xl">
+        <div className="flex flex-col md:flex-row gap-5 items-center justify-around bg-base-200 p-5 rounded-xl">
           <div className=" space-y-5">
             <h2 className="text-4xl font-bold">Ahmeds Heart Surgery</h2>
             <p className="w-[400px] text-xl">6-year-old Ahmed underwent life-saving heart surgery at our camp, allowing him to play and live a normal, active life.</p>
@@ -53,7 +53,7 @@ const Slider = () => {
       </SwiperSlide>
       {/* Slide - 3 */}
       <SwiperSlide>
-        <div className="flex flex-col md:flex-row gap-5 items-center justify-around bg-base-300 p-5 rounded-xl">
+        <div className="flex flex-col md:flex-row gap-5 items-center justify-around bg-base-200 p-5 rounded-xl">
           <div className=" space-y-5">
             <h2 className="text-4xl font-bold">Vaccines for a Safer Tomorrow</h2>
             <p className="w-[400px] text-xl">Over 1,000 children were vaccinated against diseases like measles and polio, safeguarding their health and the community’s future.</p>

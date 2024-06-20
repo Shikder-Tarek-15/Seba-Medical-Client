@@ -2,9 +2,9 @@ import Slider from "./Slider";
 
 const Home = () => {
     return (
-        <div>
-            <h2>This is Home</h2>
+        <div className="mt-12">
             <Slider/>
+            <h2 className="my-6 text-3xl font-bold text-center">Popular Medical Camps</h2>
         </div>
     );
 };
