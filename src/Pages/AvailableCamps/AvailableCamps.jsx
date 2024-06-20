@@ -6,6 +6,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import moment from "moment";
 import { Helmet } from "react-helmet-async";
+import CampCard from "../../Shared/CampCard";
 
 
 const AvailableCamps = () => {
@@ -56,29 +57,9 @@ const AvailableCamps = () => {
             <button onClick={()=> setLayout(!layout)} className="btn btn-secondary">Layout</button>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2  gap-5 ${layout? 'lg:grid-cols-3' : 'lg:grid-cols-2'}`}>
-            {camps.map(camp => (
-                <div key={camp._id} className="card card-compact bg-base-200 shadow-xl">
-                    <figure><img className="h-72 w-full object-cover" src={camp.image} alt="Camp" /></figure>
-                    <div className="card-body">
-                        <div className="flex justify-between w-auto">
-                            <p>{moment(camp.dateTime).format('lll')}</p>
-                            <p className="flex gap-2 items-center">
-                                <FaLocationPin /> {camp.location}
-                            </p>
-                        </div>
-                        <h2 className="card-title">{camp.campName}</h2>
-                        <div className="flex justify-between">
-                            <h3 className="font-bold -mt-3 text-base">Doctor: {camp.healthcareProfessionalName}</h3>
-                            <p className="flex items-center justify-end gap-2"><FaPeopleGroup /> {camp.participantCount}</p>
-                        </div>
-                        <p>{camp.description}</p>
-                        <div className="card-actions justify-end">
-                            <p className="text-lg"><span className="font-bold">Fees:</span> {camp.campFees} taka</p>
-                            <Link to={`/camp-details/${camp._id}`}><button  className="btn btn-primary">Details</button></Link>
-                        </div>
-                    </div>
-                </div>
-            ))}
+            {camps.map(camp=> <CampCard key={camp._id} camp={camp}/>)
+            
+            }
         </div>
     </div>
     );
