@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const CampCard = ({camp}) => {
     return (
-        <div className="card card-compact bg-base-200 shadow-xl">
+        <div className="card card-compact bg-base-200 shadow-xl p-5 border border-orange-500">
         <figure><img className="h-72 w-full object-cover" src={camp.image} alt="Camp" /></figure>
         <div className="card-body">
             <div className="flex justify-between w-auto">
@@ -22,7 +22,7 @@ const CampCard = ({camp}) => {
             <p>{camp.description}</p>
             <div className="card-actions justify-end">
                 <p className="text-lg"><span className="font-bold">Fees:</span> {camp.campFees} taka</p>
-                <Link to={`/camp-details/${camp._id}`}><button  className="btn btn-primary">Details</button></Link>
+                <Link to={`/camp-details/${camp._id}`}><button  className="btn bg-orange-500 text-white">Details</button></Link>
             </div>
         </div>
     </div>
