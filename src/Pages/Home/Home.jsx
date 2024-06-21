@@ -6,6 +6,7 @@ import CampCard from "../../Shared/CampCard";
 import { Link } from "react-router-dom";
 import Feedback from "./Feedback";
 import Newsletter from "./Newsletter";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     
@@ -27,6 +28,9 @@ const Home = () => {
     })
     return (
         <div className="mt-12">
+            <Helmet>
+        <title>Seba Medical | Home</title>
+      </Helmet>
             <Slider/>
             <h2 className="my-6 text-3xl font-bold text-center">Popular Medical Camps</h2>
 
