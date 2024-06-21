@@ -13,10 +13,12 @@ const PaymentHistory = () => {
     const {data:itemCount=[]} = useQuery({
         queryKey: ['itemCount'],
         queryFn: async() =>{
-            const res = await axiosSecure.get('/campCount');
+            const res = await axiosSecure.get(`/paymentHistoryCount/${user.email}`);
             return res.data.count;
         }
     })
+
+    console.log(' tarek', itemCount);
     const numberOfPage = Math.ceil(itemCount / 10)
     const pages = [...Array(numberOfPage).keys()];
 
