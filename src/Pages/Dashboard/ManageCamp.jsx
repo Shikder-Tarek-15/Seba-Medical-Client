@@ -10,8 +10,8 @@ import moment from 'moment'
 import { Helmet } from "react-helmet-async";
 
 
-// const imageKey = import.meta.env.VITE_imgKey;
-// const imgAPI = `https://api.imgbb.com/1/upload?key=${imageKey}`;
+const imageKey = import.meta.env.VITE_imgKey;
+const imgAPI = `https://api.imgbb.com/1/upload?key=${imageKey}`;
 const ManageCamp = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
@@ -67,20 +67,34 @@ const ManageCamp = () => {
 
 
     const onSubmit = async (data) => {
+        const imageFile = {image: data.image[0]}
+        const img = await axiosPublic.post(imgAPI, imageFile, {
+            headers: {
+                'content-type' : 'multipart/form-data',
+            }
+        });
 
+        if(img.data.success){
             const campId = selectedCamp._id
-        
-            const res = await axiosSecure.put(`/update-camp/${campId}`, data);
-            if(res.data.modifiedCount >0){
-                Swal.fire({
-                    title: "Update!",
-                    text: "Camp Updated successfull.",
-                    icon: "success",
-                    showConfirmButton: false,
-                    timer: 1000
+            data.image = img.data.data.display_url;
+            axiosSecure.put(`/update-camp/${campId}`, data)
+            .then(res=>{
+                console.log(' i am modified', res.data);
+                if(res.data.modifiedCount >0){
+                    Swal.fire({
+                        title: "Update!",
+                        text: "Camp Updated successfull.",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1000
+                })
+                refetch();
+                document.getElementById('edit_modal').close(); 
+            }
             })
-            refetch();
-            document.getElementById('edit_modal').close(); 
+            
+
+            
         }
         
     };
@@ -217,16 +231,17 @@ const ManageCamp = () => {
                                 className="textarea textarea-bordered w-full max-w-xs"
                             />
                         </label>
-                        {/* <label className="form-control w-full max-w-xs">
+                        <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Image</span>
                             </div>
                             <input
                                 {...register("image")}
+                                required
                                 type="file"
                                 className="file-input file-input-bordered file-input-primary w-full max-w-xs"
                             />
-                        </label> */}
+                        </label>
 
                         <div className="modal-action">
                             <button type="submit" className="btn btn-primary">Save</button>
