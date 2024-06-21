@@ -4,7 +4,7 @@
 <p>Organizer email: admin@seba.com</p>
 <p>Organizer Password: Admin0017</p>
 <h4>Live URL</h4>
-[SebaMedical](https://seba-medical.web.app/)
+https://seba-medical.web.app
 
 <h2>Key Features of SEBA MEDICAL</h2>
 
