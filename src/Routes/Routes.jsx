@@ -59,8 +59,8 @@ import Error from "../Pages/Error/Error";
         // admin route
         {
           path: "addCamp",
-          // element: <AdminRoute><AddCamp/></AdminRoute>
-          element: <AddCamp/> 
+          element: <AdminRoute><AddCamp/></AdminRoute>
+          
         },
         {
           path: 'manageCamps',

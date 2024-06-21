@@ -11,7 +11,7 @@ const ManageRegisterCamp = () => {
     const { data:registerCamp=[], isLoading, refetch } = useQuery({
       queryKey: ['participant', user.email],
       queryFn: async () => {
-          const res = await axiosSecure.post(`participant/${user.email}`);
+          const res = await axiosSecure.get(`participant_camp`);
           return res.data; 
       }
   });
