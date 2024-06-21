@@ -17,17 +17,45 @@ const ManageCamp = () => {
     const axiosSecure = useAxiosSecure()
     const [selectedCamp, setSelectedCamp] = useState(null);
     const { register, handleSubmit, reset } = useForm();
+    const [currentPage, setCurrentPage] = useState(0);
     
-    const {data: camps=[],refetch, isLoading } = useQuery({
-        queryKey: ['camps'],
+    
+    // {campName, dateTime, campFees, location, healthcareProfessionalName, participantCount, image, description}
+
+
+    // pagination
+    const {data:itemCount=[]} = useQuery({
+        queryKey: ['itemCount'],
         queryFn: async() =>{
-            const res = await axiosPublic.get("/camps");
+            const res = await axiosPublic.get('/campCount');
+            return res.data.count;
+        }
+    })
+    const numberOfPage = Math.ceil(itemCount / 10)
+    const pages = [...Array(numberOfPage).keys()];
+
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
+
+    const {data: camps=[],refetch, isLoading } = useQuery({
+        queryKey: ['manageCamps', currentPage],
+        queryFn: async() =>{
+            const res = await axiosPublic.get(`/manageCamps?page=${currentPage}&size=${10}`);
             console.log(res.data);
          return res.data
         }
     })
-    // {campName, dateTime, campFees, location, healthcareProfessionalName, participantCount, image, description}
-    console.log("this is",camps);
+
 
 
     const handleEdit = (camp) => {
@@ -202,12 +230,34 @@ const ManageCamp = () => {
 
                         <div className="modal-action">
                             <button type="submit" className="btn btn-primary">Save</button>
-                            <button type="button" className="btn" onClick={() => document.getElementById('edit_modal').close()}>Cancel</button>
+                            <button  className="btn" onClick={() => document.getElementById('edit_modal').close()}>Cancel</button>
                         </div>
                     </form>
                 </div>
             </dialog>
+            {/* Pagination */}
+            <div className="flex justify-center mt-12">
+            <div aria-label="Pagination" className="inline-flex -space-x-px rounded-md shadow-sm bg-gray-100 text-gray-800">
+	<button onClick={handlePrevPage}  className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-l-md border-gray-300">
+		<span className="sr-only">Previous</span>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
+			<path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd"></path>
+		</svg>
+	</button>
+	{
+        pages.map(page=> <button key={page} onClick={()=>setCurrentPage(page)} className={`inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-300 ${currentPage === page ? 'bg-violet-600 text-white' : 'bg-blue-100'}`}>{page}</button>)
+    }
+	
+	<button onClick={handleNextPage} className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-r-md border-gray-300">
+		<span className="sr-only">Next</span>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
+			<path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path>
+		</svg>
+	</button>
+</div>
+            </div>
 
+{/* Pagination end */}
         </div>
     );
 };

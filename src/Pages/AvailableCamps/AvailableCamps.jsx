@@ -1,16 +1,11 @@
 
-import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import {FaLocationPin, FaPeopleGroup } from "react-icons/fa6";
-import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import moment from "moment";
 import { Helmet } from "react-helmet-async";
 import CampCard from "../../Shared/CampCard";
 
 
 const AvailableCamps = () => {
-    // const camps = useLoaderData() 
 
     
     const [search, setSearch] = useState("");
