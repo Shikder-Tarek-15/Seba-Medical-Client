@@ -43,7 +43,7 @@ import Error from "../Pages/Error/Error";
         {
           path: "/camp-details/:campId",
           element: <PrivateRoute><CampDetails/></PrivateRoute>,
-          loader: ({params})=> fetch(`http://localhost:5000/camp-details/${params.campId}`)
+          loader: ({params})=> fetch(`https://seba-medical-server.vercel.app/camp-details/${params.campId}`)
         }
       ]
     },
