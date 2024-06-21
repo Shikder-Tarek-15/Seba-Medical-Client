@@ -256,7 +256,6 @@ const ManageCamp = () => {
 	</button>
 </div>
             </div>
-
 {/* Pagination end */}
         </div>
     );
