@@ -1,33 +1,47 @@
-<h2>SEBA MEDICAL</h2>
+## Project Overview
+Seba Medical is a web-based platform designed to streamline the registration process for medical camps. Traditionally, participants faced long queues for registration at these camps. Our solution allows users to register from the comfort of their homes and make payments online, eliminating the hassle of waiting in line on the day of the camp.
 
+
+## Installation
+Follow these steps to set up the project locally:
+1. **Clone the repository:**
+  	git clone https://github.com/Shikder-Tarek-15/Seba-Medical-Client.git
+
+2. **Navigate to the project directory:**
+  cd Artscape-gallery-Client
+
+3. **Install the dependencies:**
+  npm install
+
+4. **Start the development server:**
+  npm run dev
 
 <p>Organizer email: admin@seba.com</p>
 <p>Organizer Password: Admin0017</p>
-<h4>Live URL</h4>
-https://seba-medical.web.app
 
-<h2>Key Features of SEBA MEDICAL</h2>
 
-•	Admin Dashboard for Camps: Admins can easily add, edit, or remove camp details like name, location, and date.
+## Server Side
+[Click Here](https://github.com/Shikder-Tarek-15/Seba-Medical_Server)
 
-•	User-Friendly Camp Listings: Users can view a list of available camps with all the important details clearly displayed.
 
-•	Paginated View: Camps are displayed 10 at a time, with simple buttons to move between pages.
+## Live Link
+[Seba Medical](https://seba-medical.web.app)
 
-•	Real-Time Updates: Any changes made by admins are immediately reflected in the camp listings without needing a page refresh.
+<p>Organizer email: admin@seba.com</p>
+<p>Organizer Password: Admin0017</p>
 
-•	Secure Data Handling: All data operations, like adding or deleting camps, are done securely to keep information safe.
 
-•	Quick and Easy Editing: Admins can update camp details using a convenient pop-up form.
+## Key feature
 
-•	Deletion Confirmation: When an admin tries to delete a camp, a confirmation message prevents accidental deletions.
+* Admin Control: Easily manage camp details like name, location, and date with intuitive editing tools.
 
-•	Search and Filter Camps: Users can search and filter camps by criteria such as date or location to find exactly what they need.
+* User-Friendly Listings: View available camps with essential information presented clearly for users.
 
-•	Responsive Design: The site looks and works great on both computers and mobile devices.
+* Real-Time Updates: Instantly see changes made by admins reflected in the camp listings without refreshing the page.
 
-•	Dynamic Page Titles: The title of the webpage changes based on what you’re viewing, making navigation simpler.
+* Secure Data Handling: Ensure all operations, from adding to deleting camps, are conducted securely to protect sensitive information.
 
+* Responsive Design: Enjoy seamless functionality across various devices, ensuring accessibility and usability.
 
 
 
